@@ -1,0 +1,1 @@
+Tutorial: http://code.tutsplus.com/tutorials/android-fundamentals-intentservice-basics--mobile-6183
