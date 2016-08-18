@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText editText;
     private Button button;
     private ResponseReceiver receiver;
+    private IntentFilter filter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +27,17 @@ public class MainActivity extends AppCompatActivity {
         editText = (EditText) findViewById(R.id.editText);
         button = (Button) findViewById(R.id.button);
 
-        IntentFilter filter = new IntentFilter(ResponseReceiver.ACTION_RESP);
+        filter = new IntentFilter(ResponseReceiver.ACTION_RESP);
         filter.addCategory(Intent.CATEGORY_DEFAULT);
         receiver = new ResponseReceiver();
         registerReceiver(receiver,filter);
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerReceiver(receiver,filter);
     }
 
     @Override
